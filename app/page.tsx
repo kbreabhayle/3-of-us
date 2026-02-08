@@ -208,7 +208,7 @@ export default function Home() {
                 { src: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=400", label: "BMW M4" },
                 { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
                 { src: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=400", label: "Bugatti" },
-                { src: "https://images.unsplash.com/photo-1612723326194-ef8cadf9e798?auto=format&fit=crop&q=80&w=400", label: "Supra" },
+                { src: "https://images.unsplash.com/photo-1616570659902-127e997f043e?auto=format&fit=crop&q=80&w=400", label: "Supra" },
                 { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
               ].map((item, i) => (
                 <div key={i} className="flex flex-col items-center gap-6 group cursor-pointer flex-shrink-0 snap-center">
