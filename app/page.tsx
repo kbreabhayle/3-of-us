@@ -127,7 +127,7 @@ export default function Home() {
                   src={img.src}
                   alt={img.alt}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out"
+                  className="object-cover grayscale-0 md:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                 />
 
@@ -207,7 +207,7 @@ export default function Home() {
                   src={item.src}
                   alt={item.label}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
+                  className="object-cover grayscale-0 md:grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
                 />
 
                 {/* Floating Label - Mobile Friendly */}
@@ -272,7 +272,7 @@ export default function Home() {
               {carItems.map((item, i) => (
                 <div key={i} className="flex flex-col items-center gap-8 group cursor-pointer flex-shrink-0">
                   <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/20 group-hover:border-white transition-all duration-700 p-2 bg-white/5 backdrop-blur-sm shadow-[0_0_30px_rgba(255,255,255,0.05)]">
-                    <div className="relative w-full h-full rounded-full overflow-hidden grayscale md:grayscale group-hover:grayscale-0 transition-all duration-1000">
+                    <div className="relative w-full h-full rounded-full overflow-hidden grayscale-0 md:grayscale group-hover:grayscale-0 transition-all duration-1000">
                       <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                     </div>
                   </div>
