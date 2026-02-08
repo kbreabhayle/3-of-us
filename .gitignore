@@ -2,9 +2,18 @@
 
 # dependencies
 /node_modules
-/.pnp
-.pnp.*
-.yarn/*
+.DS_Store
+dist
+dist-ssr
+*.local
+.gemini
+.agent
+brain
+.next
+out
+.turbo
+build
+/*
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
