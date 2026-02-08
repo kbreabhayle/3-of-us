@@ -265,6 +265,8 @@ export default function Home() {
               ref={scrollRef}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={() => setIsPaused(true)}
+              onTouchEnd={() => setIsPaused(false)}
               className="flex gap-12 md:gap-24 px-12 md:px-48 overflow-x-auto no-scrollbar pb-12"
             >
               {carItems.map((item, i) => (
@@ -274,7 +276,7 @@ export default function Home() {
                       <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                     </div>
                   </div>
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] text-muted group-hover:text-white transition-all group-hover:tracking-[0.8em]">
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-white/60 md:text-muted group-hover:text-white transition-all group-hover:tracking-[0.8em]">
                     {item.label}
                   </span>
                 </div>
