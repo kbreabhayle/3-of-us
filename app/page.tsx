@@ -58,7 +58,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Past Struggles - Horizontal (Landscape) Grid */}
+      {/* 2. Past Struggles - Premium Asymmetric Grid */}
       <section id="struggles" className="min-h-screen py-32 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <Reveal className="mb-24 md:text-center">
@@ -69,15 +69,15 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[300px] md:auto-rows-[400px]">
             {[
-              { src: "/images/20250620_123458.webp", alt: "Memory 1" },
-              { src: "/images/20250620_125558.webp", alt: "Memory 2" },
-              { src: "/images/IMG_20231122_202715_782.webp", alt: "Memory 3" },
-              { src: "/images/Snapchat-1005829759.webp", alt: "Memory 4" },
-              { src: "/images/IMG_3068.JPG.webp", alt: "Memory 5" },
+              { src: "/images/20250620_123458.webp", alt: "Memory 1", span: "md:col-span-4" },
+              { src: "/images/20250620_125558.webp", alt: "Memory 2", span: "md:col-span-8" },
+              { src: "/images/IMG_20231122_202715_782.webp", alt: "Memory 3", span: "md:col-span-6" },
+              { src: "/images/Snapchat-1005829759.webp", alt: "Memory 4", span: "md:col-span-6" },
+              { src: "/images/IMG_3068.JPG.webp", alt: "Memory 5", span: "md:col-span-12" }, // Full width for impact
             ].map((img, i) => (
-              <Reveal key={i} delay={i * 0.1} className={cn("relative group overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm aspect-[16/9]")}>
+              <Reveal key={i} delay={i * 0.1} className={cn("relative group overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm", img.span)}>
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -126,7 +126,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* 4. The Grind - Horizontal (Landscape) Focus */}
+      {/* 4. The Grind - High Contrast Grid */}
       <section id="grind" className="min-h-screen py-32 px-6 relative z-10">
         <Reveal className="max-w-7xl mx-auto mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
@@ -146,7 +146,7 @@ export default function Home() {
             { src: "/images/IMG_20240823_100017_349@1594860141.webp", label: "Vision" },
           ].map((item, i) => (
             <Reveal key={i} delay={i * 0.1}>
-              <div className="group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white/5">
+              <div className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-white/5">
                 <Image
                   src={item.src}
                   alt={item.label}
@@ -186,9 +186,8 @@ export default function Home() {
               { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-6 group cursor-pointer">
-                {/* Slightly more rectangular/horizontal focus for cars as well */}
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/20 group-hover:border-white transition-colors duration-500 p-1">
-                  <div className="relative w-full h-full rounded-xl overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+                <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border border-white/20 group-hover:border-white transition-colors duration-500 p-2">
+                  <div className="relative w-full h-full rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
                     <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   </div>
                 </div>
