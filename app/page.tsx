@@ -201,31 +201,56 @@ export default function Home() {
             Freedom, abundance, and peace. This is the life we are claiming.
           </p>
 
-          <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
-            <div className="flex gap-8 md:gap-16 px-12 md:px-24 overflow-x-auto no-scrollbar scroll-smooth pb-12 snap-x snap-mandatory">
+          <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] group/scroll">
+            {/* Navigation Arrows */}
+            <button
+              onClick={() => {
+                const el = document.getElementById('car-gallery');
+                if (el) el.scrollBy({ left: -400, behavior: 'smooth' });
+              }}
+              className="absolute left-10 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover/scroll:opacity-100 transition-all hover:bg-white/10 hover:scale-110 active:scale-95 hidden md:flex items-center justify-center"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button
+              onClick={() => {
+                const el = document.getElementById('car-gallery');
+                if (el) el.scrollBy({ left: 400, behavior: 'smooth' });
+              }}
+              className="absolute right-10 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover/scroll:opacity-100 transition-all hover:bg-white/10 hover:scale-110 active:scale-95 hidden md:flex items-center justify-center"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </button>
+
+            <div
+              id="car-gallery"
+              className="flex gap-12 md:gap-24 px-12 md:px-48 overflow-x-auto no-scrollbar scroll-smooth pb-12 snap-x snap-mandatory"
+            >
               {[
                 { src: "/images/doge-challerger.jpg", label: "Dodge" },
                 { src: "/images/bmw_m4.jpeg", label: "BMW M4" },
-                { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
                 { src: "/images/bugati-chiron-og.jpg", label: "Bugatti" },
                 { src: "/images/supra-mk4.png", label: "Supra" },
+                { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
                 { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
+                { src: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=400", label: "Classic" },
+                { src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=400", label: "Precision" },
               ].map((item, i) => (
-                <div key={i} className="flex flex-col items-center gap-6 group cursor-pointer flex-shrink-0 snap-center">
-                  <div className="relative w-40 h-40 md:w-64 md:h-64 rounded-full overflow-hidden border border-white/20 group-hover:border-white transition-all duration-500 p-2 bg-white/5 backdrop-blur-sm">
-                    <div className="relative w-full h-full rounded-full overflow-hidden grayscale md:grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div key={i} className="flex flex-col items-center gap-8 group cursor-pointer flex-shrink-0 snap-center">
+                  <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/20 group-hover:border-white transition-all duration-700 p-2 bg-white/5 backdrop-blur-sm shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                    <div className="relative w-full h-full rounded-full overflow-hidden grayscale md:grayscale group-hover:grayscale-0 transition-all duration-1000">
                       <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                     </div>
                   </div>
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-muted group-hover:text-white transition-colors opacity-100 md:opacity-100">
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] text-muted group-hover:text-white transition-all group-hover:tracking-[0.8em]">
                     {item.label}
                   </span>
                 </div>
               ))}
             </div>
 
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent pointer-events-none z-20" />
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent pointer-events-none z-20" />
+            <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-background via-background/40 to-transparent pointer-events-none z-20" />
+            <div className="absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-background via-background/40 to-transparent pointer-events-none z-20" />
           </div>
 
           <AnimatePresence>
