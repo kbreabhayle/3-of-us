@@ -72,8 +72,6 @@ export default function Home() {
     { src: "/images/bmw_m4.jpeg", label: "BMW M4" },
     { src: "/images/bugati-chiron-og.jpg", label: "Bugatti" },
     { src: "/images/supra-mk4.png", label: "Supra" },
-    { src: "/images/IMG_20251122_104515_581.webp", label: "Ferrari" }, // Using local high-res car
-    { src: "/images/IMG_20251122_122918_714.webp", label: "Freedom" }, // Using local high-res car
   ];
   const carItems = [...baseItems, ...baseItems, ...baseItems];
 
