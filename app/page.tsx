@@ -204,11 +204,11 @@ export default function Home() {
           <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
             <div className="flex gap-8 md:gap-16 px-12 md:px-24 overflow-x-auto no-scrollbar scroll-smooth pb-12 snap-x snap-mandatory">
               {[
-                { src: "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&q=80&w=400", label: "Dodge" },
-                { src: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=400", label: "BMW M4" },
+                { src: "/images/doge-challerger.jpg", label: "Dodge" },
+                { src: "/images/bmw_m4.jpeg", label: "BMW M4" },
                 { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
-                { src: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=400", label: "Bugatti" },
-                { src: "https://images.unsplash.com/photo-1616570659902-127e997f043e?auto=format&fit=crop&q=80&w=400", label: "Supra" },
+                { src: "/images/bugati-chiron-og.jpg", label: "Bugatti" },
+                { src: "/images/supra-mk4.png", label: "Supra" },
                 { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
               ].map((item, i) => (
                 <div key={i} className="flex flex-col items-center gap-6 group cursor-pointer flex-shrink-0 snap-center">
