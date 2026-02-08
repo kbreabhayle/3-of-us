@@ -58,34 +58,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Past Struggles - Vertical (Portrait) Grid */}
+      {/* 2. Past Struggles - Premium Vertical Bento Grid */}
       <section id="struggles" className="min-h-screen py-32 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <Reveal className="mb-24 md:text-center">
             <span className="text-muted font-bold uppercase tracking-[0.2em] text-xs block mb-4">Chapter I</span>
             <h2 className="text-5xl md:text-7xl font-bold mb-6">Past Struggles</h2>
             <p className="text-muted text-xl font-light max-w-2xl md:mx-auto">
-              We didn't start with much. Every failure was a lesson, every hardship a brick in our foundation.
+              We started from nothing. These moments formed the foundation of who we are today.
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { src: "/images/20250620_123458.webp", alt: "Memory 1" },
-              { src: "/images/20250620_125558.webp", alt: "Memory 2" },
-              { src: "/images/IMG_20231122_202715_782.webp", alt: "Memory 3" },
-              { src: "/images/Snapchat-1005829759.webp", alt: "Memory 4" },
-              { src: "/images/IMG_3068.JPG.webp", alt: "Memory 5" },
+              { src: "/images/20250620_123458.webp", alt: "Roots" },
+              { src: "/images/20250620_123327.webp", alt: "History" },
+              { src: "/images/IMG_20231122_202715_782.webp", alt: "Beginning" },
+              { src: "/images/20240506_171158 (1) (1).webp", alt: "Legacy" },
+              { src: "/images/Picsart_25-11-12_21-03-07-047.webp", alt: "Hustle" },
             ].map((img, i) => (
-              <Reveal key={i} delay={i * 0.1} className={cn("relative group overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm aspect-[3/4]")}>
+              <Reveal key={i} delay={i * 0.1} className={cn("relative group overflow-hidden rounded-3xl backdrop-blur-md bg-white/5 border border-white/10 aspect-[3/4]")}>
+                {/* Premium Border Glow */}
+                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
                 <Image
                   src={img.src}
                   alt={img.alt}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
-                  sizes="(max-width: 768px) 50vw, 20vw"
+                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out"
+                  sizes="(max-width: 1024px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Soft Inner Glow */}
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                  <span className="text-sm font-bold uppercase tracking-[0.3em] text-white/60">{img.alt}</span>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -126,7 +136,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* 4. The Grind - Vertical (Portrait) Focus */}
+      {/* 4. The Grind - High-Style Dynamic Grid */}
       <section id="grind" className="min-h-screen py-32 px-6 relative z-10">
         <Reveal className="max-w-7xl mx-auto mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
@@ -134,29 +144,41 @@ export default function Home() {
             <h2 className="text-5xl md:text-7xl font-bold">The Forge</h2>
           </div>
           <p className="text-muted text-lg max-w-md text-balance">
-            Working through the nights, solving one problem at a time. This is where the magic happens.
+            Endless nights, relentless focus. This is where we build the future.
           </p>
         </Reveal>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             { src: "/images/IMG_20240823_095738_384@1594859428.webp", label: "Focus" },
-            { src: "/images/IMG_20240823_100005_180@1594859464.webp", label: "Action" },
-            { src: "/images/IMG_20240823_100011_261@1594860138.webp", label: "Growth" },
-            { src: "/images/IMG_20240823_100017_349@1594860141.webp", label: "Vision" },
+            { src: "/images/IMG_20240823_100017_349@1594860141.webp", label: "Action" },
+            { src: "/images/IMG_20240823_095743_735@1594859431.webp", label: "Grind" },
+            { src: "/images/IMG_20240823_095857_635@1594859432.webp", label: "Steel" },
+            { src: "/images/IMG_20240823_095921_751@1594859434.webp", label: "Spirit" },
+            { src: "/images/Picsart_25-10-13_08-13-46-090.webp", label: "Impact" },
+            { src: "/images/IMG_20251122_104515_581.webp", label: "Success" },
+            { src: "/images/IMG_20251122_122918_714.webp", label: "Growth" },
           ].map((item, i) => (
             <Reveal key={i} delay={i * 0.1}>
-              <div className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+              <div className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-white/5 border border-white/10">
                 <Image
                   src={item.src}
                   alt={item.label}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out"
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
                 />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40 backdrop-blur-[2px]">
-                  <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+
+                {/* Floating Label */}
+                <div className="absolute top-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white">
                     {item.label}
                   </span>
+                </div>
+
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 backdrop-blur-[1px] transition-all duration-700 flex flex-col items-center justify-center p-6 text-center">
+                  <p className="text-white text-3xl font-black uppercase tracking-tighter scale-90 group-hover:scale-100 transition-transform duration-700">
+                    {item.label}
+                  </p>
                 </div>
               </div>
             </Reveal>
