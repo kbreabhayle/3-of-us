@@ -69,15 +69,12 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
             {[
               { src: "/images/20250620_123458.webp", alt: "Roots" },
-              { src: "/images/20250620_125558.webp", alt: "History" },
-              { src: "/images/20250620_123327.webp", alt: "Beginning" },
-              { src: "/images/IMG_20231122_202715_782.webp", alt: "Foundation" },
-              { src: "/images/Snapchat-1005829759.webp", alt: "Brothers" },
+              { src: "/images/20250620_123327.webp", alt: "History" },
+              { src: "/images/IMG_20231122_202715_782.webp", alt: "Beginning" },
               { src: "/images/20240506_171158 (1) (1).webp", alt: "Legacy" },
-              { src: "/images/IMG_3068.JPG.webp", alt: "Visions" },
               { src: "/images/Picsart_25-11-12_21-03-07-047.webp", alt: "Hustle" },
             ].map((img, i) => (
               <Reveal key={i} delay={i * 0.1} className={cn("relative group overflow-hidden rounded-3xl backdrop-blur-md bg-white/5 border border-white/10 aspect-[3/4]")}>
@@ -90,14 +87,15 @@ export default function Home() {
                   alt={img.alt}
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out"
-                  sizes="(max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
                 />
 
                 {/* Soft Inner Glow */}
                 <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-                  <span className="text-sm font-bold uppercase tracking-[0.3em] text-white/60">{img.alt}</span>
+                {/* Mobile Friendly Label */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                  <span className="text-sm font-bold uppercase tracking-[0.3em] text-white/80">{img.alt}</span>
                 </div>
               </Reveal>
             ))}
@@ -154,13 +152,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             { src: "/images/IMG_20240823_095738_384@1594859428.webp", label: "Focus" },
-            { src: "/images/IMG_20240823_100005_180@1594859464.webp", label: "Action" },
-            { src: "/images/IMG_20240823_100011_261@1594860138.webp", label: "Growth" },
-            { src: "/images/IMG_20240823_100017_349@1594860141.webp", label: "Vision" },
+            { src: "/images/IMG_20240823_100017_349@1594860141.webp", label: "Action" },
             { src: "/images/IMG_20240823_095743_735@1594859431.webp", label: "Grind" },
             { src: "/images/IMG_20240823_095857_635@1594859432.webp", label: "Steel" },
             { src: "/images/IMG_20240823_095921_751@1594859434.webp", label: "Spirit" },
             { src: "/images/Picsart_25-10-13_08-13-46-090.webp", label: "Impact" },
+            { src: "/images/IMG_20251122_104515_581.webp", label: "Success" },
+            { src: "/images/IMG_20251122_122918_714.webp", label: "Growth" },
           ].map((item, i) => (
             <Reveal key={i} delay={i * 0.1}>
               <div className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-white/5 border border-white/10">
@@ -171,14 +169,14 @@ export default function Home() {
                   className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
                 />
 
-                {/* Floating Label */}
-                <div className="absolute top-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
+                {/* Floating Label - Mobile Friendly */}
+                <div className="absolute top-6 left-6 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-white">
                     {item.label}
                   </span>
                 </div>
 
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 backdrop-blur-[1px] transition-all duration-700 flex flex-col items-center justify-center p-6 text-center">
+                <div className="absolute inset-0 bg-black/40 opacity-100 md:opacity-0 group-hover:opacity-100 backdrop-blur-[1px] transition-all duration-700 flex flex-col items-center justify-center p-6 text-center">
                   <p className="text-white text-3xl font-black uppercase tracking-tighter scale-90 group-hover:scale-100 transition-transform duration-700">
                     {item.label}
                   </p>
@@ -189,7 +187,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Future Vision - The Golden Horizon */}
+      {/* 5. Future Vision - The Golden Horizon (Scrobl Uble Circular Gallery) */}
       <section id="future" className="min-h-screen py-32 px-6 flex flex-col justify-center items-center text-center relative z-10 overflow-hidden">
         {/* Ambient Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.03] rounded-full blur-[100px] pointer-events-none" />
@@ -203,8 +201,8 @@ export default function Home() {
             Freedom, abundance, and peace. This is the life we are claiming.
           </p>
 
-          <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden group/scroll">
-            <div className="flex gap-8 md:gap-16 px-12 md:px-24 overflow-x-auto no-scrollbar scroll-smooth pb-12 cursor-grab active:cursor-grabbing snap-x snap-mandatory">
+          <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
+            <div className="flex gap-8 md:gap-16 px-12 md:px-24 overflow-x-auto no-scrollbar scroll-smooth pb-12 snap-x snap-mandatory">
               {[
                 { src: "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&q=80&w=400", label: "Dodge" },
                 { src: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=400", label: "BMW M4" },
@@ -215,18 +213,17 @@ export default function Home() {
               ].map((item, i) => (
                 <div key={i} className="flex flex-col items-center gap-6 group cursor-pointer flex-shrink-0 snap-center">
                   <div className="relative w-40 h-40 md:w-64 md:h-64 rounded-full overflow-hidden border border-white/20 group-hover:border-white transition-all duration-500 p-2 bg-white/5 backdrop-blur-sm">
-                    <div className="relative w-full h-full rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <div className="relative w-full h-full rounded-full overflow-hidden grayscale md:grayscale group-hover:grayscale-0 transition-all duration-700">
                       <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                     </div>
                   </div>
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-muted group-hover:text-white transition-colors">
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-muted group-hover:text-white transition-colors opacity-100 md:opacity-100">
                     {item.label}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* Scroll Indicator / Gradient Fades */}
             <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent pointer-events-none z-20" />
             <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent pointer-events-none z-20" />
           </div>
@@ -239,7 +236,7 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={triggerConfetti}
-                className="group relative px-12 py-5 rounded-full bg-white text-black font-bold text-lg tracking-wide overflow-hidden"
+                className="group relative px-12 py-5 rounded-full bg-white text-black font-bold text-lg tracking-wide overflow-hidden mt-12"
               >
                 <span className="relative z-10">You are Loved! ❤️</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -268,7 +265,8 @@ export default function Home() {
                 Close
               </button>
             </motion.div>
-          </div>)}
+          </div>
+        )}
       </AnimatePresence>
     </main>
   );
