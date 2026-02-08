@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 const Reveal = ({ children, delay = 0, className }: { children: React.ReactNode; delay?: number; className?: string }) => (
@@ -20,6 +20,8 @@ const Reveal = ({ children, delay = 0, className }: { children: React.ReactNode;
 export default function Home() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [btnVisible, setBtnVisible] = useState(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   const triggerConfetti = () => {
     setShowConfetti(true);
@@ -33,6 +35,23 @@ export default function Home() {
       return () => clearTimeout(timer);
     }
   }, [showConfetti]);
+
+  // Auto-scroll logic
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer || isPaused) return;
+
+    const interval = setInterval(() => {
+      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      if (scrollContainer.scrollLeft >= maxScroll - 1) {
+        scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollContainer.scrollBy({ left: 2, behavior: "auto" });
+      }
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <main className="relative min-h-screen text-foreground selection:bg-white/20">
@@ -205,8 +224,7 @@ export default function Home() {
             {/* Navigation Arrows */}
             <button
               onClick={() => {
-                const el = document.getElementById('car-gallery');
-                if (el) el.scrollBy({ left: -400, behavior: 'smooth' });
+                if (scrollRef.current) scrollRef.current.scrollBy({ left: -400, behavior: 'smooth' });
               }}
               className="absolute left-10 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover/scroll:opacity-100 transition-all hover:bg-white/10 hover:scale-110 active:scale-95 hidden md:flex items-center justify-center"
             >
@@ -214,8 +232,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => {
-                const el = document.getElementById('car-gallery');
-                if (el) el.scrollBy({ left: 400, behavior: 'smooth' });
+                if (scrollRef.current) scrollRef.current.scrollBy({ left: 400, behavior: 'smooth' });
               }}
               className="absolute right-10 top-1/2 -translate-y-1/2 z-30 p-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover/scroll:opacity-100 transition-all hover:bg-white/10 hover:scale-110 active:scale-95 hidden md:flex items-center justify-center"
             >
@@ -223,7 +240,9 @@ export default function Home() {
             </button>
 
             <div
-              id="car-gallery"
+              ref={scrollRef}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
               className="flex gap-12 md:gap-24 px-12 md:px-48 overflow-x-auto no-scrollbar scroll-smooth pb-12 snap-x snap-mandatory"
             >
               {[
