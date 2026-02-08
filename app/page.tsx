@@ -48,9 +48,9 @@ export default function Home() {
       if (scrollContainer.scrollLeft >= itemWidth) {
         scrollContainer.scrollLeft = 0;
       } else {
-        scrollContainer.scrollLeft += 1;
+        scrollContainer.scrollLeft += 2;
       }
-    }, 20); // 50fps for smooth motion
+    }, 16);
 
     return () => clearInterval(interval);
   }, [isPaused]);
