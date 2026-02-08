@@ -267,7 +267,7 @@ export default function Home() {
               ref={scrollRef}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
-              className="flex gap-12 md:gap-24 px-12 md:px-48 overflow-x-auto no-scrollbar scroll-smooth pb-12"
+              className="flex gap-12 md:gap-24 px-12 md:px-48 overflow-x-auto no-scrollbar pb-12"
             >
               {carItems.map((item, i) => (
                 <div key={i} className="flex flex-col items-center gap-8 group cursor-pointer flex-shrink-0">
