@@ -43,7 +43,7 @@ export default function Home() {
 
     let rafId: number;
     let lastTime = 0;
-    const speed = 150; // Pixels per second
+    const speed = 300; // Nitro Speed: 300 Pixels per second
 
     const scroll = (timestamp: number) => {
       if (!lastTime) lastTime = timestamp;
@@ -51,9 +51,10 @@ export default function Home() {
       lastTime = timestamp;
 
       if (scrollContainer) {
-        const itemWidth = scrollContainer.scrollWidth / 2;
-        if (scrollContainer.scrollLeft >= itemWidth) {
-          scrollContainer.scrollLeft = 0;
+        // Triple-buffered reset logic
+        const itemWidth = scrollContainer.scrollWidth / 3;
+        if (scrollContainer.scrollLeft >= itemWidth * 2) {
+          scrollContainer.scrollLeft -= itemWidth;
         } else {
           scrollContainer.scrollLeft += speed * deltaTime;
         }
@@ -65,21 +66,16 @@ export default function Home() {
     return () => cancelAnimationFrame(rafId);
   }, [isPaused]);
 
-  // Car items array (duplicated for infinite loop)
-  const carItems = [
+  // Car items array (Triple-buffered for absolute seamlessness)
+  const baseItems = [
     { src: "/images/doge-challerger.jpg", label: "Dodge" },
     { src: "/images/bmw_m4.jpeg", label: "BMW M4" },
     { src: "/images/bugati-chiron-og.jpg", label: "Bugatti" },
     { src: "/images/supra-mk4.png", label: "Supra" },
-    { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
-    { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
-    { src: "/images/doge-challerger.jpg", label: "Dodge" },
-    { src: "/images/bmw_m4.jpeg", label: "BMW M4" },
-    { src: "/images/bugati-chiron-og.jpg", label: "Bugatti" },
-    { src: "/images/supra-mk4.png", label: "Supra" },
-    { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
-    { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
+    { src: "/images/IMG_20251122_104515_581.webp", label: "Ferrari" }, // Using local high-res car
+    { src: "/images/IMG_20251122_122918_714.webp", label: "Freedom" }, // Using local high-res car
   ];
+  const carItems = [...baseItems, ...baseItems, ...baseItems];
 
   return (
     <main className="relative min-h-screen text-foreground selection:bg-white/20">
