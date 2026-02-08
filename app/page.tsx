@@ -58,7 +58,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Past Struggles - Premium Asymmetric Grid */}
+      {/* 2. Past Struggles - Vertical (Portrait) Grid */}
       <section id="struggles" className="min-h-screen py-32 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <Reveal className="mb-24 md:text-center">
@@ -69,21 +69,21 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[300px] md:auto-rows-[400px]">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {[
-              { src: "/images/20250620_123458.webp", alt: "Memory 1", span: "md:col-span-4" },
-              { src: "/images/20250620_125558.webp", alt: "Memory 2", span: "md:col-span-8" },
-              { src: "/images/IMG_20231122_202715_782.webp", alt: "Memory 3", span: "md:col-span-6" },
-              { src: "/images/Snapchat-1005829759.webp", alt: "Memory 4", span: "md:col-span-6" },
-              { src: "/images/IMG_3068.JPG.webp", alt: "Memory 5", span: "md:col-span-12" }, // Full width for impact
+              { src: "/images/20250620_123458.webp", alt: "Memory 1" },
+              { src: "/images/20250620_125558.webp", alt: "Memory 2" },
+              { src: "/images/IMG_20231122_202715_782.webp", alt: "Memory 3" },
+              { src: "/images/Snapchat-1005829759.webp", alt: "Memory 4" },
+              { src: "/images/IMG_3068.JPG.webp", alt: "Memory 5" },
             ].map((img, i) => (
-              <Reveal key={i} delay={i * 0.1} className={cn("relative group overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm", img.span)}>
+              <Reveal key={i} delay={i * 0.1} className={cn("relative group overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm aspect-[3/4]")}>
                 <Image
                   src={img.src}
                   alt={img.alt}
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 50vw, 20vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </Reveal>
@@ -126,7 +126,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* 4. The Grind - High Contrast Grid */}
+      {/* 4. The Grind - Vertical (Portrait) Focus */}
       <section id="grind" className="min-h-screen py-32 px-6 relative z-10">
         <Reveal className="max-w-7xl mx-auto mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
@@ -138,7 +138,7 @@ export default function Home() {
           </p>
         </Reveal>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { src: "/images/IMG_20240823_095738_384@1594859428.webp", label: "Focus" },
             { src: "/images/IMG_20240823_100005_180@1594859464.webp", label: "Action" },
@@ -146,7 +146,7 @@ export default function Home() {
             { src: "/images/IMG_20240823_100017_349@1594860141.webp", label: "Vision" },
           ].map((item, i) => (
             <Reveal key={i} delay={i * 0.1}>
-              <div className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-white/5">
+              <div className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-white/5 border border-white/10">
                 <Image
                   src={item.src}
                   alt={item.label}
@@ -154,7 +154,7 @@ export default function Home() {
                   className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out"
                 />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40 backdrop-blur-[2px]">
-                  <span className="text-3xl font-black uppercase tracking-widest text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     {item.label}
                   </span>
                 </div>
