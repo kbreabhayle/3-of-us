@@ -42,16 +42,34 @@ export default function Home() {
     if (!scrollContainer || isPaused) return;
 
     const interval = setInterval(() => {
-      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-      if (scrollContainer.scrollLeft >= maxScroll - 1) {
-        scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
+      if (!scrollContainer) return;
+
+      const itemWidth = scrollContainer.scrollWidth / 2;
+      if (scrollContainer.scrollLeft >= itemWidth) {
+        scrollContainer.scrollLeft = 0;
       } else {
-        scrollContainer.scrollBy({ left: 2, behavior: "auto" });
+        scrollContainer.scrollLeft += 1;
       }
-    }, 30);
+    }, 20); // 50fps for smooth motion
 
     return () => clearInterval(interval);
   }, [isPaused]);
+
+  // Car items array (duplicated for infinite loop)
+  const carItems = [
+    { src: "/images/doge-challerger.jpg", label: "Dodge" },
+    { src: "/images/bmw_m4.jpeg", label: "BMW M4" },
+    { src: "/images/bugati-chiron-og.jpg", label: "Bugatti" },
+    { src: "/images/supra-mk4.png", label: "Supra" },
+    { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
+    { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
+    { src: "/images/doge-challerger.jpg", label: "Dodge" },
+    { src: "/images/bmw_m4.jpeg", label: "BMW M4" },
+    { src: "/images/bugati-chiron-og.jpg", label: "Bugatti" },
+    { src: "/images/supra-mk4.png", label: "Supra" },
+    { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
+    { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
+  ];
 
   return (
     <main className="relative min-h-screen text-foreground selection:bg-white/20">
@@ -243,19 +261,10 @@ export default function Home() {
               ref={scrollRef}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
-              className="flex gap-12 md:gap-24 px-12 md:px-48 overflow-x-auto no-scrollbar scroll-smooth pb-12 snap-x snap-mandatory"
+              className="flex gap-12 md:gap-24 px-12 md:px-48 overflow-x-auto no-scrollbar scroll-smooth pb-12"
             >
-              {[
-                { src: "/images/doge-challerger.jpg", label: "Dodge" },
-                { src: "/images/bmw_m4.jpeg", label: "BMW M4" },
-                { src: "/images/bugati-chiron-og.jpg", label: "Bugatti" },
-                { src: "/images/supra-mk4.png", label: "Supra" },
-                { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
-                { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
-                { src: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=400", label: "Classic" },
-                { src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=400", label: "Precision" },
-              ].map((item, i) => (
-                <div key={i} className="flex flex-col items-center gap-8 group cursor-pointer flex-shrink-0 snap-center">
+              {carItems.map((item, i) => (
+                <div key={i} className="flex flex-col items-center gap-8 group cursor-pointer flex-shrink-0">
                   <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/20 group-hover:border-white transition-all duration-700 p-2 bg-white/5 backdrop-blur-sm shadow-[0_0_30px_rgba(255,255,255,0.05)]">
                     <div className="relative w-full h-full rounded-full overflow-hidden grayscale md:grayscale group-hover:grayscale-0 transition-all duration-1000">
                       <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
