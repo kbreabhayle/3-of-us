@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #000000;
+  --primary: #ffffff;
+  --text: #ffffff;
+  --text-muted: #94a3b8;
+  --transition: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-muted: var(--text-muted);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+section {
+  min-height: 100vh;
+  padding: 100px 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+@keyframes fadePulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.scroll-indicator {
+  animation: fadePulse 2s infinite ease-in-out;
+}
