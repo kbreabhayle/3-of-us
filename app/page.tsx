@@ -36,23 +36,33 @@ export default function Home() {
     }
   }, [showConfetti]);
 
-  // Auto-scroll logic
+  // Nitro-Smooth Auto-scroll logic
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer || isPaused) return;
 
-    const interval = setInterval(() => {
-      if (!scrollContainer) return;
+    let rafId: number;
+    let lastTime = 0;
+    const speed = 150; // Pixels per second
 
-      const itemWidth = scrollContainer.scrollWidth / 2;
-      if (scrollContainer.scrollLeft >= itemWidth) {
-        scrollContainer.scrollLeft = 0;
-      } else {
-        scrollContainer.scrollLeft += 2;
+    const scroll = (timestamp: number) => {
+      if (!lastTime) lastTime = timestamp;
+      const deltaTime = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      if (scrollContainer) {
+        const itemWidth = scrollContainer.scrollWidth / 2;
+        if (scrollContainer.scrollLeft >= itemWidth) {
+          scrollContainer.scrollLeft = 0;
+        } else {
+          scrollContainer.scrollLeft += speed * deltaTime;
+        }
       }
-    }, 16);
+      rafId = requestAnimationFrame(scroll);
+    };
 
-    return () => clearInterval(interval);
+    rafId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(rafId);
   }, [isPaused]);
 
   // Car items array (duplicated for infinite loop)
