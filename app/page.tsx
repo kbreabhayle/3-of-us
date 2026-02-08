@@ -72,9 +72,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { src: "/images/20250620_123458.webp", alt: "Roots" },
-              { src: "/images/20250620_123327.webp", alt: "History" },
-              { src: "/images/IMG_20231122_202715_782.webp", alt: "Beginning" },
+              { src: "/images/20250620_125558.webp", alt: "History" },
+              { src: "/images/20250620_123327.webp", alt: "Beginning" },
+              { src: "/images/IMG_20231122_202715_782.webp", alt: "Foundation" },
+              { src: "/images/Snapchat-1005829759.webp", alt: "Brothers" },
               { src: "/images/20240506_171158 (1) (1).webp", alt: "Legacy" },
+              { src: "/images/IMG_3068.JPG.webp", alt: "Visions" },
               { src: "/images/Picsart_25-11-12_21-03-07-047.webp", alt: "Hustle" },
             ].map((img, i) => (
               <Reveal key={i} delay={i * 0.1} className={cn("relative group overflow-hidden rounded-3xl backdrop-blur-md bg-white/5 border border-white/10 aspect-[3/4]")}>
@@ -151,13 +154,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             { src: "/images/IMG_20240823_095738_384@1594859428.webp", label: "Focus" },
-            { src: "/images/IMG_20240823_100017_349@1594860141.webp", label: "Action" },
+            { src: "/images/IMG_20240823_100005_180@1594859464.webp", label: "Action" },
+            { src: "/images/IMG_20240823_100011_261@1594860138.webp", label: "Growth" },
+            { src: "/images/IMG_20240823_100017_349@1594860141.webp", label: "Vision" },
             { src: "/images/IMG_20240823_095743_735@1594859431.webp", label: "Grind" },
             { src: "/images/IMG_20240823_095857_635@1594859432.webp", label: "Steel" },
             { src: "/images/IMG_20240823_095921_751@1594859434.webp", label: "Spirit" },
             { src: "/images/Picsart_25-10-13_08-13-46-090.webp", label: "Impact" },
-            { src: "/images/IMG_20251122_104515_581.webp", label: "Success" },
-            { src: "/images/IMG_20251122_122918_714.webp", label: "Growth" },
           ].map((item, i) => (
             <Reveal key={i} delay={i * 0.1}>
               <div className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-white/5 border border-white/10">
@@ -200,24 +203,32 @@ export default function Home() {
             Freedom, abundance, and peace. This is the life we are claiming.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 w-full max-w-6xl mb-32 text-center">
-            {[
-              { src: "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&q=80&w=400", label: "Dodge" },
-              { src: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=400", label: "BMW M4" },
-              { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
-              { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center gap-6 group cursor-pointer">
-                <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border border-white/20 group-hover:border-white transition-colors duration-500 p-2">
-                  <div className="relative w-full h-full rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
-                    <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+          <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden group/scroll">
+            <div className="flex gap-8 md:gap-16 px-12 md:px-24 overflow-x-auto no-scrollbar scroll-smooth pb-12 cursor-grab active:cursor-grabbing snap-x snap-mandatory">
+              {[
+                { src: "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&q=80&w=400", label: "Dodge" },
+                { src: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=400", label: "BMW M4" },
+                { src: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=400", label: "Ferrari" },
+                { src: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=400", label: "Bugatti" },
+                { src: "https://images.unsplash.com/photo-1612723326194-ef8cadf9e798?auto=format&fit=crop&q=80&w=400", label: "Supra" },
+                { src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=400", label: "Freedom" },
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col items-center gap-6 group cursor-pointer flex-shrink-0 snap-center">
+                  <div className="relative w-40 h-40 md:w-64 md:h-64 rounded-full overflow-hidden border border-white/20 group-hover:border-white transition-all duration-500 p-2 bg-white/5 backdrop-blur-sm">
+                    <div className="relative w-full h-full rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                      <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                    </div>
                   </div>
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-muted group-hover:text-white transition-colors">
+                    {item.label}
+                  </span>
                 </div>
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted group-hover:text-white transition-colors">
-                  {item.label}
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Scroll Indicator / Gradient Fades */}
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent pointer-events-none z-20" />
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent pointer-events-none z-20" />
           </div>
 
           <AnimatePresence>
