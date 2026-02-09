@@ -118,26 +118,59 @@ export default function Home() {
               { src: "/images/20240506_171158 (1) (1).webp", alt: "Legacy" },
               { src: "/images/Picsart_25-11-12_21-03-07-047.webp", alt: "Hustle" },
             ].map((img, i) => (
-              <Reveal key={i} delay={i * 0.1} className={cn("relative group overflow-hidden rounded-3xl backdrop-blur-md bg-white/5 border border-white/10 aspect-[3/4]")}>
-                {/* Premium Border Glow */}
-                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <Reveal key={i} delay={i * 0.1}>
+                <motion.div
+                  whileHover="hover"
+                  whileTap="hover"
+                  initial="initial"
+                  className="relative overflow-hidden rounded-3xl backdrop-blur-md bg-white/5 border border-white/10 aspect-[3/4]"
+                >
+                  <motion.div
+                    variants={{
+                      initial: { opacity: 0 },
+                      hover: { opacity: 1 }
+                    }}
+                    transition={{ duration: 0.7 }}
+                    className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                  />
+                  <motion.div
+                    variants={{
+                      initial: { opacity: 0 },
+                      hover: { opacity: 1 }
+                    }}
+                    transition={{ duration: 0.7 }}
+                    className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent"
+                  />
 
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover grayscale-0 md:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                />
+                  <motion.div
+                    variants={{
+                      initial: { scale: 1, filter: "grayscale(100%)" },
+                      hover: { scale: 1.05, filter: "grayscale(0%)" }
+                    }}
+                    transition={{ duration: 1 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                    />
+                  </motion.div>
 
-                {/* Soft Inner Glow */}
-                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" />
 
-                {/* Mobile Friendly Label */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-                  <span className="text-sm font-bold uppercase tracking-[0.3em] text-white/80">{img.alt}</span>
-                </div>
+                  <motion.div
+                    variants={{
+                      initial: { opacity: 1 }, // Visible on mobile by default
+                      hover: { opacity: 1 }
+                    }}
+                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8 md:opacity-0 md:group-hover:opacity-100"
+                  >
+                    <span className="text-sm font-bold uppercase tracking-[0.3em] text-white/80">{img.alt}</span>
+                  </motion.div>
+                </motion.div>
               </Reveal>
             ))}
           </div>
@@ -202,27 +235,45 @@ export default function Home() {
             { src: "/images/IMG_20251122_122918_714.webp", label: "Growth" },
           ].map((item, i) => (
             <Reveal key={i} delay={i * 0.1}>
-              <div className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-white/5 border border-white/10">
-                <Image
-                  src={item.src}
-                  alt={item.label}
-                  fill
-                  className="object-cover grayscale-0 md:grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
-                />
+              <motion.div
+                whileHover="hover"
+                whileTap="hover"
+                initial="initial"
+                className="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-white/5 border border-white/10"
+              >
+                <motion.div
+                  variants={{
+                    initial: { scale: 1, filter: "grayscale(100%)" },
+                    hover: { scale: 1.1, filter: "grayscale(0%)" }
+                  }}
+                  transition={{ duration: 1 }}
+                  className="absolute inset-0"
+                >
+                  <Image src={item.src} alt={item.label} fill className="object-cover" />
+                </motion.div>
 
-                {/* Floating Label - Mobile Friendly */}
-                <div className="absolute top-6 left-6 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-white">
-                    {item.label}
-                  </span>
-                </div>
+                <motion.div
+                  variants={{
+                    initial: { opacity: 1, y: 0 }, // Always visible label on mobile
+                    hover: { opacity: 1, y: 0 }
+                  }}
+                  className="absolute top-6 left-6 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 md:opacity-0"
+                >
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white">{item.label}</span>
+                </motion.div>
 
-                <div className="absolute inset-0 bg-black/40 opacity-100 md:opacity-0 group-hover:opacity-100 backdrop-blur-[1px] transition-all duration-700 flex flex-col items-center justify-center p-6 text-center">
-                  <p className="text-white text-3xl font-black uppercase tracking-tighter scale-90 group-hover:scale-100 transition-transform duration-700">
+                <motion.div
+                  variants={{
+                    initial: { opacity: 0, backdropFilter: "blur(0px)" },
+                    hover: { opacity: 1, backdropFilter: "blur(2px)" }
+                  }}
+                  className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center"
+                >
+                  <p className="text-white text-3xl font-black uppercase tracking-tighter">
                     {item.label}
                   </p>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </Reveal>
           ))}
         </div>
@@ -270,16 +321,52 @@ export default function Home() {
               className="flex gap-12 md:gap-24 px-12 md:px-48 overflow-x-auto no-scrollbar pb-12"
             >
               {carItems.map((item, i) => (
-                <div key={i} className="flex flex-col items-center gap-8 group cursor-pointer flex-shrink-0">
-                  <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/20 group-hover:border-white transition-all duration-700 p-2 bg-white/5 backdrop-blur-sm shadow-[0_0_30px_rgba(255,255,255,0.05)]">
-                    <div className="relative w-full h-full rounded-full overflow-hidden grayscale-0 md:grayscale group-hover:grayscale-0 transition-all duration-1000">
-                      <Image src={item.src} alt={item.label} fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
-                    </div>
-                  </div>
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-white/60 md:text-muted group-hover:text-white transition-all group-hover:tracking-[0.8em]">
+                <motion.div
+                  key={i}
+                  whileHover="hover"
+                  whileTap="hover"
+                  initial="initial"
+                  className="flex flex-col items-center gap-8 cursor-pointer flex-shrink-0"
+                >
+                  <motion.div
+                    variants={{
+                      initial: { borderColor: "rgba(255,255,255,0.2)" },
+                      hover: { borderColor: "rgba(255,255,255,1)" }
+                    }}
+                    transition={{ duration: 0.7 }}
+                    className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border p-2 bg-white/5 backdrop-blur-sm shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+                  >
+                    <motion.div
+                      variants={{
+                        initial: { filter: "grayscale(100%)" },
+                        hover: { filter: "grayscale(0%)" }
+                      }}
+                      transition={{ duration: 1 }}
+                      className="relative w-full h-full rounded-full overflow-hidden"
+                    >
+                      <motion.div
+                        variants={{
+                          initial: { scale: 1 },
+                          hover: { scale: 1.1 }
+                        }}
+                        transition={{ duration: 1 }}
+                        className="relative w-full h-full"
+                      >
+                        <Image src={item.src} alt={item.label} fill className="object-cover" />
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
+                  <motion.span
+                    variants={{
+                      initial: { letterSpacing: "0.5em", color: "rgba(148,163,184,1)" }, // text-muted
+                      hover: { letterSpacing: "0.8em", color: "rgba(255,255,255,1)" }
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className="text-[10px] md:text-xs font-bold uppercase"
+                  >
                     {item.label}
-                  </span>
-                </div>
+                  </motion.span>
+                </motion.div>
               ))}
             </div>
 
