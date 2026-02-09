@@ -278,6 +278,99 @@ export default function Home() {
           ))}
         </div>
       </section>
+      {/* 4.5 Unique Destinies - Individual Dream Paths */}
+      <section id="destinies" className="py-32 px-6 relative z-10 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent">
+        <div className="max-w-7xl mx-auto">
+          <Reveal className="mb-24 md:text-center">
+            <span className="text-muted font-bold uppercase tracking-[0.2em] text-xs block mb-4">Chapter IV</span>
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 text-white">Unique Destinies</h2>
+            <p className="text-muted text-xl font-light max-w-2xl md:mx-auto">
+              One vision holds us together, but three distinct paths drive our fire.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {[
+              {
+                title: "The Voice",
+                role: "Singer & Artist",
+                description: "Capturing the soul through melody. A journey into the heart of music and expression.",
+                src: "/images/Picsart_25-11-12_21-03-07-047.webp",
+                delay: 0.1
+              },
+              {
+                title: "The Architect",
+                role: "Trader & Web Developer",
+                description: "Building systems, mastering markets. Designing the digital and financial future.",
+                src: "/images/IMG_20240823_100017_349@1594860141.webp",
+                delay: 0.2
+              },
+              {
+                title: "The Strategist",
+                role: "Capital Markets Trader",
+                description: "Precision in execution. Navigating the pulse of global markets with discipline.",
+                src: "/images/IMG_20251122_122918_714.webp",
+                delay: 0.3
+              }
+            ].map((path, i) => (
+              <Reveal key={i} delay={path.delay}>
+                <motion.div
+                  whileHover="hover"
+                  whileTap="hover"
+                  initial="initial"
+                  className="group relative h-[600px] rounded-[3rem] overflow-hidden border border-white/10 bg-black/40 backdrop-blur-sm"
+                >
+                  <motion.div
+                    variants={{
+                      initial: { scale: 1.1, filter: "grayscale(100%) brightness(0.5)" },
+                      hover: { scale: 1, filter: "grayscale(0%) brightness(0.8)" }
+                    }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={path.src}
+                      alt={path.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </motion.div>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+                  <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                    <motion.div
+                      variants={{
+                        initial: { y: 20, opacity: 0.8 },
+                        hover: { y: 0, opacity: 1 }
+                      }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <span className="text-white/40 text-xs font-black uppercase tracking-[0.4em] mb-4 block">
+                        {path.role}
+                      </span>
+                      <h3 className="text-4xl font-bold text-white mb-6 uppercase tracking-tighter">
+                        {path.title}
+                      </h3>
+                      <p className="text-white/60 font-light leading-relaxed max-w-xs">
+                        {path.description}
+                      </p>
+                    </motion.div>
+
+                    <motion.div
+                      variants={{
+                        initial: { scaleX: 0 },
+                        hover: { scaleX: 1 }
+                      }}
+                      className="h-px bg-white/20 mt-8 origin-left"
+                    />
+                  </div>
+                </motion.div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 5. Future Vision - The Golden Horizon (Scrobl Uble Circular Gallery) */}
       <section id="future" className="min-h-screen py-32 px-6 flex flex-col justify-center items-center text-center relative z-10 overflow-hidden">
