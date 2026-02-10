@@ -314,7 +314,7 @@ export default function Home() {
                 role: "Trader",
                 dream: "Precision in execution.",
                 car: "Porsche GT3 911",
-                destination: "Global Mastery",
+                destination: "USA",
                 src: "/images/kbreab.jpg",
                 color: "from-emerald-500/20 to-cyan-500/20"
               }
