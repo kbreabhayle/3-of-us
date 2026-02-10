@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence, useScroll } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -22,7 +22,6 @@ export default function Home() {
   const [btnVisible, setBtnVisible] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
-  const { scrollYProgress } = useScroll();
 
   const triggerConfetti = () => {
     setShowConfetti(true);
@@ -77,15 +76,10 @@ export default function Home() {
   const carItems = [...baseItems, ...baseItems, ...baseItems];
 
   return (
-    <main className="relative bg-background text-foreground selection:bg-white/20">
-      {/* Scroll Progress Indicator */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-white z-[100] origin-left"
-        style={{ scaleX: scrollYProgress }}
-      />
+    <main className="relative min-h-screen text-foreground selection:bg-white/20">
 
       {/* 1. Introduction - Massive Scale & Impact */}
-      <section className="relative z-10 sticky top-0 h-screen flex flex-col justify-center items-center text-center px-6 bg-background">
+      <section id="intro" className="min-h-screen flex flex-col justify-center items-center text-center px-6 relative z-10">
         <Reveal>
           <span className="inline-block text-muted font-bold uppercase tracking-[0.4em] text-xs md:text-sm mb-8 animate-in fade-in zoom-in duration-1000">
             The Vision
@@ -93,11 +87,9 @@ export default function Home() {
           <h1 className="text-[12vw] leading-[0.85] font-black tracking-tighter mb-8 text-white mix-blend-difference">
             THREE<br />HEARTS<br /><span className="text-gradient">ONE VISION</span>
           </h1>
-          <p className="max-w-xl mx-auto text-muted text-lg md:text-2xl font-light leading-relaxed mb-12">
+          <p className="max-w-xl mx-auto text-muted text-lg md:text-xl font-light leading-relaxed">
             This isn't just a website. It's the story of where we were, where we are, and where we're going.
-            <span className="block mt-6 text-white font-black uppercase tracking-[0.2em] opacity-80 scale-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-              Brotherhood bound by ambition.
-            </span>
+            <strong className="block mt-2 text-white font-medium">Brotherhood bound by ambition.</strong>
           </p>
         </Reveal>
 
@@ -108,11 +100,11 @@ export default function Home() {
       </section>
 
       {/* 2. Past Struggles - Premium Vertical Bento Grid */}
-      <section className="relative z-20 sticky top-0 min-h-screen py-32 px-6 bg-background shadow-[0_-50px_100px_rgba(0,0,0,0.9)]">
+      <section id="struggles" className="min-h-screen py-32 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <Reveal className="mb-24 md:text-center">
             <span className="text-muted font-bold uppercase tracking-[0.2em] text-xs block mb-4">Chapter I</span>
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 text-white">Past Struggles</h2>
+            <h2 className="text-5xl md:text-7xl font-bold mb-6">Past Struggles</h2>
             <p className="text-muted text-xl font-light max-w-2xl md:mx-auto">
               We started from nothing. These moments formed the foundation of who we are today.
             </p>
@@ -186,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* 3. Mindset - Glowing Frosted Glass */}
-      <section className="relative z-30 sticky top-0 min-h-screen flex items-center justify-center px-6 py-24 bg-background shadow-[0_-50px_100px_rgba(0,0,0,0.9)]">
+      <section id="mindset" className="min-h-screen flex items-center justify-center px-6 py-24 relative z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent pointer-events-none" />
 
         <Reveal>
@@ -195,7 +187,7 @@ export default function Home() {
             <div className="absolute -inset-[2px] bg-gradient-to-br from-white/20 to-transparent rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none blur-sm" />
 
             <span className="relative z-10 text-muted font-bold uppercase tracking-[0.2em] text-xs mb-6 block">Chapter II</span>
-            <h2 className="relative z-10 text-4xl md:text-7xl font-bold mb-8 leading-tight text-white">
+            <h2 className="relative z-10 text-4xl md:text-7xl font-bold mb-8 leading-tight">
               Mindset & <br /><span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">Discipline</span>
             </h2>
             <p className="relative z-10 text-muted text-xl font-light mb-16 max-w-2xl text-balance">
@@ -220,11 +212,11 @@ export default function Home() {
       </section>
 
       {/* 4. The Grind - High-Style Dynamic Grid */}
-      <section className="relative z-40 sticky top-0 min-h-screen py-32 px-6 bg-background shadow-[0_-50px_100px_rgba(0,0,0,0.9)]">
+      <section id="grind" className="min-h-screen py-32 px-6 relative z-10">
         <Reveal className="max-w-7xl mx-auto mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             <span className="text-muted font-bold uppercase tracking-[0.2em] text-xs block mb-4">Chapter III</span>
-            <h2 className="text-5xl md:text-7xl font-bold text-white">The Forge</h2>
+            <h2 className="text-5xl md:text-7xl font-bold">The Forge</h2>
           </div>
           <p className="text-muted text-lg max-w-md text-balance">
             Endless nights, relentless focus. This is where we build the future.
@@ -286,14 +278,13 @@ export default function Home() {
           ))}
         </div>
       </section>
-
       {/* 4.5 Unique Destinies - Individual Dream Paths */}
-      <section className="relative z-50 sticky top-0 min-h-screen py-32 px-6 bg-background shadow-[0_-50px_100px_rgba(0,0,0,0.9)]">
+      <section id="destinies" className="py-32 px-6 relative z-10 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent">
         <div className="max-w-7xl mx-auto">
           <Reveal className="mb-24 md:text-center">
             <span className="text-muted font-bold uppercase tracking-[0.2em] text-xs block mb-4">Chapter IV</span>
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 text-white">Unique Destinies</h2>
-            <p className="text-muted text-xl font-light max-w-2xl md:mx-auto">
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 text-white text-center">Unique Destinies</h2>
+            <p className="text-muted text-xl font-light max-w-2xl mx-auto text-center">
               One vision holds us together, but three distinct paths drive our fire.
             </p>
           </Reveal>
@@ -301,24 +292,30 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {[
               {
-                title: "The Voice",
-                role: "Singer & Artist",
-                description: "Capturing the soul through melody. A journey into the heart of music and expression.",
-                src: "/images/Picsart_25-11-12_21-03-07-047.webp",
+                name: "Kalab",
+                role: "Trader & Web Developer",
+                dream: "Mastering the markets & the digital realm.",
+                car: "Bugatti",
+                destination: "USA",
+                src: "/images/kalab.jpg",
                 delay: 0.1
               },
               {
-                title: "The Architect",
-                role: "Trader & Web Developer",
-                description: "Building systems, mastering markets. Designing the digital and financial future.",
-                src: "/images/IMG_20240823_100017_349@1594860141.webp",
+                name: "Eyob",
+                role: "Singer",
+                dream: "Capturing souls through melody.",
+                car: "Supra MK4",
+                destination: "Ethiopia",
+                src: "/images/eyob.webp",
                 delay: 0.2
               },
               {
-                title: "The Strategist",
-                role: "Capital Markets Trader",
-                description: "Precision in execution. Navigating the pulse of global markets with discipline.",
-                src: "/images/IMG_20251122_122918_714.webp",
+                name: "Kbreab",
+                role: "Trader",
+                dream: "Precision in execution.",
+                car: "Porsche GT3 911",
+                destination: "Global Mastery",
+                src: "/images/kbreab.jpg",
                 delay: 0.3
               }
             ].map((path, i) => (
@@ -327,7 +324,7 @@ export default function Home() {
                   whileHover="hover"
                   whileTap="hover"
                   initial="initial"
-                  className="group relative h-[600px] rounded-[3rem] overflow-hidden border border-white/10 bg-black/40 backdrop-blur-sm"
+                  className="group relative h-[650px] rounded-[3rem] overflow-hidden border border-white/10 bg-black/40 backdrop-blur-sm shadow-2xl"
                 >
                   <motion.div
                     variants={{
@@ -339,7 +336,7 @@ export default function Home() {
                   >
                     <Image
                       src={path.src}
-                      alt={path.title}
+                      alt={path.name}
                       fill
                       className="object-cover"
                     />
@@ -355,15 +352,27 @@ export default function Home() {
                       }}
                       transition={{ duration: 0.6 }}
                     >
-                      <span className="text-white/40 text-xs font-black uppercase tracking-[0.4em] mb-4 block" style={{ color: "rgba(255,255,255,0.4)" }}>
+                      <span className="text-white/40 text-xs font-black uppercase tracking-[0.4em] mb-4 block" style={{ color: 'rgba(255,255,255,0.4)' }}>
                         {path.role}
                       </span>
-                      <h3 className="text-4xl font-bold text-white mb-6 uppercase tracking-tighter">
-                        {path.title}
+                      <h3 className="text-5xl font-bold text-white mb-6 uppercase tracking-tighter">
+                        {path.name}
                       </h3>
-                      <p className="text-white/60 font-light leading-relaxed max-w-xs">
-                        {path.description}
-                      </p>
+
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                          <p className="text-white/80 font-light text-sm italic">{path.dream}</p>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                          <p className="text-white/80 font-medium text-sm">Car: <span className="text-white font-bold">{path.car}</span></p>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                          <p className="text-white/80 font-medium text-sm">Target: <span className="text-white font-bold">{path.destination}</span></p>
+                        </div>
+                      </div>
                     </motion.div>
 
                     <motion.div
@@ -382,7 +391,7 @@ export default function Home() {
       </section>
 
       {/* 5. Future Vision - The Golden Horizon (Scrobl Uble Circular Gallery) */}
-      <section className="relative z-[60] sticky top-0 min-h-screen py-32 px-6 flex flex-col justify-center items-center text-center bg-background shadow-[0_-50px_100px_rgba(0,0,0,0.9)] overflow-hidden">
+      <section id="future" className="min-h-screen py-32 px-6 flex flex-col justify-center items-center text-center relative z-10 overflow-hidden">
         {/* Ambient Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.03] rounded-full blur-[100px] pointer-events-none" />
 
