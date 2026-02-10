@@ -298,6 +298,7 @@ export default function Home() {
                 car: "Bugatti",
                 destination: "USA",
                 src: "/images/kalab.jpg",
+                dreamSrc: "/images/bugati-chiron-og.jpg",
                 color: "from-blue-500/20 to-purple-500/20"
               },
               {
@@ -307,6 +308,7 @@ export default function Home() {
                 car: "Supra MK4",
                 destination: "Ethiopia",
                 src: "/images/eyob.webp",
+                dreamSrc: "/images/supra-mk4.png",
                 color: "from-red-500/20 to-orange-500/20"
               },
               {
@@ -316,24 +318,43 @@ export default function Home() {
                 car: "Porsche GT3 911",
                 destination: "USA",
                 src: "/images/kbreab.jpg",
+                dreamSrc: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=2070",
                 color: "from-emerald-500/20 to-cyan-500/20"
               }
             ].map((path, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <motion.div
                   whileHover="float"
+                  whileTap="float"
                   initial="initial"
-                  className="group relative h-[700px] rounded-[4rem] p-1 bg-gradient-to-br from-white/20 via-transparent to-white/5"
+                  className="group relative h-[700px] rounded-[4rem] p-1 bg-gradient-to-br from-white/20 via-transparent to-white/5 cursor-pointer"
                 >
                   <div className="relative h-full w-full rounded-[3.8rem] overflow-hidden bg-black shadow-2xl">
-                    {/* Background Image with Parallax Scale */}
+                    {/* Level 2: Dream Visual (Car/Dream) - Revealed on Hover/Tap */}
                     <motion.div
                       variants={{
-                        initial: { scale: 1.2, filter: "grayscale(100%) brightness(0.4)" },
-                        float: { scale: 1, filter: "grayscale(0%) brightness(0.7)" }
+                        initial: { scale: 1.3, opacity: 0, filter: "brightness(0)" },
+                        float: { scale: 1, opacity: 1, filter: "brightness(0.7)" }
                       }}
-                      transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
-                      className="absolute inset-0"
+                      transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+                      className="absolute inset-0 z-0"
+                    >
+                      <Image
+                        src={path.dreamSrc}
+                        alt={`${path.name}'s Dream`}
+                        fill
+                        className="object-cover"
+                      />
+                    </motion.div>
+
+                    {/* Level 1: Personal Identity Photo */}
+                    <motion.div
+                      variants={{
+                        initial: { scale: 1.1, opacity: 1, filter: "grayscale(100%) brightness(0.6)" },
+                        float: { scale: 1.05, opacity: 0, filter: "grayscale(0%) brightness(0.8)" }
+                      }}
+                      transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
+                      className="absolute inset-0 z-10"
                     >
                       <Image
                         src={path.src}
@@ -344,14 +365,14 @@ export default function Home() {
                     </motion.div>
 
                     {/* Gradient Overlays */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${path.color} opacity-0 group-hover:opacity-40 transition-opacity duration-1000`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-20" />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${path.color} opacity-0 group-hover:opacity-40 transition-opacity duration-1000 z-20`} />
 
                     {/* Rim Light Effect */}
-                    <div className="absolute inset-0 border border-white/10 rounded-[3.8rem] group-hover:border-white/30 transition-colors duration-700" />
+                    <div className="absolute inset-0 border border-white/10 rounded-[3.8rem] group-hover:border-white/30 transition-colors duration-700 z-30" />
 
                     {/* Content Container */}
-                    <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                    <div className="absolute inset-0 p-12 flex flex-col justify-end z-40">
                       <motion.div
                         variants={{
                           initial: { y: 40, opacity: 0 },
@@ -403,7 +424,7 @@ export default function Home() {
                         float: { x: '100%', y: '100%' }
                       }}
                       transition={{ duration: 1.5, ease: "easeInOut" }}
-                      className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 pointer-events-none"
+                      className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 pointer-events-none z-50"
                     />
                   </div>
                 </motion.div>
