@@ -289,7 +289,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             {[
               {
                 name: "Kalab",
@@ -298,7 +298,7 @@ export default function Home() {
                 car: "Bugatti",
                 destination: "USA",
                 src: "/images/kalab.jpg",
-                delay: 0.1
+                color: "from-blue-500/20 to-purple-500/20"
               },
               {
                 name: "Eyob",
@@ -307,7 +307,7 @@ export default function Home() {
                 car: "Supra MK4",
                 destination: "Ethiopia",
                 src: "/images/eyob.webp",
-                delay: 0.2
+                color: "from-red-500/20 to-orange-500/20"
               },
               {
                 name: "Kbreab",
@@ -316,71 +316,94 @@ export default function Home() {
                 car: "Porsche GT3 911",
                 destination: "Global Mastery",
                 src: "/images/kbreab.jpg",
-                delay: 0.3
+                color: "from-emerald-500/20 to-cyan-500/20"
               }
             ].map((path, i) => (
-              <Reveal key={i} delay={path.delay}>
+              <Reveal key={i} delay={i * 0.1}>
                 <motion.div
-                  whileHover="hover"
-                  whileTap="hover"
+                  whileHover="float"
                   initial="initial"
-                  className="group relative h-[650px] rounded-[3rem] overflow-hidden border border-white/10 bg-black/40 backdrop-blur-sm shadow-2xl"
+                  className="group relative h-[700px] rounded-[4rem] p-1 bg-gradient-to-br from-white/20 via-transparent to-white/5"
                 >
-                  <motion.div
-                    variants={{
-                      initial: { scale: 1.1, filter: "grayscale(100%) brightness(0.5)" },
-                      hover: { scale: 1, filter: "grayscale(0%) brightness(0.8)" }
-                    }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={path.src}
-                      alt={path.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </motion.div>
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-
-                  <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                  <div className="relative h-full w-full rounded-[3.8rem] overflow-hidden bg-black shadow-2xl">
+                    {/* Background Image with Parallax Scale */}
                     <motion.div
                       variants={{
-                        initial: { y: 20, opacity: 0.8 },
-                        hover: { y: 0, opacity: 1 }
+                        initial: { scale: 1.2, filter: "grayscale(100%) brightness(0.4)" },
+                        float: { scale: 1, filter: "grayscale(0%) brightness(0.7)" }
                       }}
-                      transition={{ duration: 0.6 }}
+                      transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
+                      className="absolute inset-0"
                     >
-                      <span className="text-white/40 text-xs font-black uppercase tracking-[0.4em] mb-4 block" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                        {path.role}
-                      </span>
-                      <h3 className="text-5xl font-bold text-white mb-6 uppercase tracking-tighter">
-                        {path.name}
-                      </h3>
-
-                      <div className="space-y-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                          <p className="text-white/80 font-light text-sm italic">{path.dream}</p>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                          <p className="text-white/80 font-medium text-sm">Car: <span className="text-white font-bold">{path.car}</span></p>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                          <p className="text-white/80 font-medium text-sm">Target: <span className="text-white font-bold">{path.destination}</span></p>
-                        </div>
-                      </div>
+                      <Image
+                        src={path.src}
+                        alt={path.name}
+                        fill
+                        className="object-cover"
+                      />
                     </motion.div>
 
+                    {/* Gradient Overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${path.color} opacity-0 group-hover:opacity-40 transition-opacity duration-1000`} />
+
+                    {/* Rim Light Effect */}
+                    <div className="absolute inset-0 border border-white/10 rounded-[3.8rem] group-hover:border-white/30 transition-colors duration-700" />
+
+                    {/* Content Container */}
+                    <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                      <motion.div
+                        variants={{
+                          initial: { y: 40, opacity: 0 },
+                          float: { y: 0, opacity: 1 }
+                        }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                      >
+                        <span className="inline-block px-4 py-1 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/60 text-[10px] font-black uppercase tracking-[0.4em] mb-6">
+                          {path.role}
+                        </span>
+
+                        <h3 className="text-6xl font-black text-white mb-8 tracking-tighter leading-none">
+                          {path.name}
+                        </h3>
+
+                        <div className="space-y-6">
+                          <p className="text-white/60 font-light text-lg leading-relaxed italic max-w-xs border-l-2 border-white/20 pl-6">
+                            "{path.dream}"
+                          </p>
+
+                          <div className="flex flex-wrap gap-3">
+                            <div className="flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10">
+                              <span className="text-[10px] uppercase tracking-widest text-white/40">Car</span>
+                              <span className="text-xs font-bold text-white uppercase">{path.car}</span>
+                            </div>
+                            <div className="flex items-center gap-3 px-5 py-2.5 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10">
+                              <span className="text-[10px] uppercase tracking-widest text-white/40">Aim</span>
+                              <span className="text-xs font-bold text-white uppercase">{path.destination}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Animated Line */}
+                      <motion.div
+                        variants={{
+                          initial: { scaleX: 0, opacity: 0 },
+                          float: { scaleX: 1, opacity: 1 }
+                        }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                        className="h-px bg-gradient-to-r from-transparent via-white/40 to-transparent mt-12 origin-center"
+                      />
+                    </div>
+
+                    {/* Gloss Shine Overlay */}
                     <motion.div
                       variants={{
-                        initial: { scaleX: 0 },
-                        hover: { scaleX: 1 }
+                        initial: { x: '-100%', y: '-100%' },
+                        float: { x: '100%', y: '100%' }
                       }}
-                      className="h-px bg-white/20 mt-8 origin-left"
+                      transition={{ duration: 1.5, ease: "easeInOut" }}
+                      className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 pointer-events-none"
                     />
                   </div>
                 </motion.div>
