@@ -286,10 +286,10 @@ export default function Home() {
                 role: "Singer",
                 dream: "Capturing souls through melody.",
                 car: "Supra MK4",
-                destination: "Ethiopia",
+                destination: "Wukro, Ethiopia",
                 src: "/images/eyob.webp",
                 dreamSrc: "/images/supra-mk4.png",
-                countrySrc: "/images/dest-ethiopia.jpg",
+                countrySrc: "/images/Wukro_Ethiopia.jpg",
                 color: "from-red-500/20 to-orange-500/20"
               },
               {
